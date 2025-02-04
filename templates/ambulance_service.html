@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <meta charset="UTF-8">
+    <title>Ambulance Service</title>
+</head>
+<body>
+    <h2>Ambulance Service</h2>
+    <p>This page provides ambulance service information.</p>
+
+    <form action="{{ url_for('ambulance_service') }}" method="post">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br>
+
+        <input type="submit" value="Send Message">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

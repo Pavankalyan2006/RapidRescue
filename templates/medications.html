@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medications</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Medications Information</h1>
+    <p>Details of medications based on conditions will be displayed here.</p>
+
+    <form id="medication-form">
+        <label for="disease">Enter a Disease:</label>
+        <input type="text" id="disease" name="disease" required>
+        <button type="submit">Get Medications</button>
+    </form>
+
+    <div id="medication-results"></div>
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+
+    <script>
+        document.getElementById('medication-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const disease = document.getElementById('disease').value;
+            const response = await fetch(`/get_medications?disease=${disease}`);
+            const medications = await response.json();
+
+            const resultsDiv = document.getElementById('medication-results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+            if (medications.length > 0) {
+                medications.forEach(med => {
+                    const medInfo = document.createElement('div');
+                    medInfo.innerHTML = `<strong>Brand Name:</strong> ${med.brand_name} <br>
+                                        <strong>Generic Name:</strong> ${med.generic_name} <br>
+                                        <strong>Indications:</strong> ${med.indications} <hr>`;
+                    resultsDiv.appendChild(medInfo);
+                });
+            } else {
+                resultsDiv.innerHTML = '<p>No medications found for this disease.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

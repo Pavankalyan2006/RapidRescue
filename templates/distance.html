@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Distance</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script>
+        async function calculateDistance() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const response = await fetch(`/calculate_distance?origin=${origin}&destination=${destination}`);
+            const data = await response.json();
+            if (data.distance) {
+                alert(`Distance: ${data.distance} meters`);
+            } else {
+                alert('Error calculating distance.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculate Distance</h1>
+    <input type="text" id="origin" placeholder="Origin (lat,lng)" required>
+    <input type="text" id="destination" placeholder="Destination (lat,lng)" required>
+    <button onclick="calculateDistance()">Calculate Distance</button>
+</body>
+</html>

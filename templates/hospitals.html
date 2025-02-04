@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .hospital-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .hospital-card {
+            background-color: #f0f0f0;
+            width: 250px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .hospital-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .specialization, .rating {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function searchSpecialization() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('hospital-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let specialization = cards[i].getElementsByClassName('specialization')[0].innerText.toLowerCase();
+                if (specialization.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Hospital Listings</h1>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" onkeyup="searchSpecialization()" placeholder="Search by specialization...">
+    </div>
+    
+    <div class="hospital-container">
+        <!-- 25 Hospital Cards -->
+        <div class="hospital-card">
+            <div class="hospital-name">City Hospital</div>
+            <div class="specialization">Cardiology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Green Valley Clinic</div>
+            <div class="specialization">Orthopedics</div>
+            <div class="rating">Rating: ★★★★★</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Sunrise Medical Center</div>
+            <div class="specialization">Pediatrics</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Bright Future Hospital</div>
+            <div class="specialization">Oncology</div>
+            <div class="rating">Rating: ★★★☆☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Oceanview Healthcare</div>
+            <div class="specialization">Dermatology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Mountain View Clinic</div>
+            <div class="specialization">Neurology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Evergreen Health Center</div>
+            <div class="specialization">Gastroenterology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Lakeview Hospital</div>
+            <div class="specialization">Orthopedics</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Sunshine Clinic</div>
+            <div class="specialization">ENT</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Rainbow Children's Hospital</div>
+            <div class="specialization">Pediatrics</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Hope Cancer Center</div>
+            <div class="specialization">Oncology</div>
+            <div class="rating">Rating: ★★★★★</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Heart Care Hospital</div>
+            <div class="specialization">Cardiology</div>
+            <div class="rating">Rating: ★★★★★</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">New Horizons Neurology</div>
+            <div class="specialization">Neurology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Southside Dermatology Clinic</div>
+            <div class="specialization">Dermatology</div>
+            <div class="rating">Rating: ★★★☆☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Skyline Orthopedics</div>
+            <div class="specialization">Orthopedics</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Riverbend Gastroenterology</div>
+            <div class="specialization">Gastroenterology</div>
+            <div class="rating">Rating: ★★★★★</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Vista ENT Clinic</div>
+            <div class="specialization">ENT</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Peak Pediatrics</div>
+            <div class="specialization">Pediatrics</div>
+            <div class="rating">Rating: ★★★☆☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Wellness Cancer Institute</div>
+            <div class="specialization">Oncology</div>
+            <div class="rating">Rating: ★★★★★</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Crescent Heart Institute</div>
+            <div class="specialization">Cardiology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Harborview Neurology</div>
+            <div class="specialization">Neurology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Valley Dermatology</div>
+            <div class="specialization">Dermatology</div>
+            <div class="rating">Rating: ★★★☆☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Healing Hands Orthopedics</div>
+            <div class="specialization">Orthopedics</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Horizon Gastro Health</div>
+            <div class="specialization">Gastroenterology</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+        <div class="hospital-card">
+            <div class="hospital-name">Sound Ear Clinic</div>
+            <div class="specialization">ENT</div>
+            <div class="rating">Rating: ★★★★☆</div>
+        </div>
+    </div>
+
+</body>
+</html>
