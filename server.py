@@ -6,9 +6,9 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Replace with a secure, random key
 
 # Twilio credentials
-account_sid = "ACa502df151ae05f655d2795ed2f459a46"
-auth_token = "f0ec918094613d53c54c8ddb5f7bf646"
-twilio_phone_number = "+19382045162"
+account_sid = "Enter your key"
+auth_token = "Enter your Token"
+twilio_phone_number = "Enter your number"
 
 # Dummy in-memory storage for registered users
 users = {}
